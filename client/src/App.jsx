@@ -35,7 +35,7 @@ export default function App() {
       {/* Fixed logo header */}
       <header className="fixed top-0 left-0 w-full z-50 backdrop-blur-lg bg-white/10 border-b border-white/20 shadow-md">
         <div className="max-w-5xl mx-auto py-2 flex justify-center">
-          <img src="./src/components/logo.png" alt="uQuiz Logo" className="h-20" />
+          <img src="https://firebasestorage.googleapis.com/v0/b/imgupload-fefce.appspot.com/o/moronss%2FuserImage%2FFullLogo_Transparent.png?alt=media&token=79cd7b1d-6859-45e3-9252-509726493a5c" alt="uQuiz Logo" className="h-20" />
         </div>
       </header>
 
