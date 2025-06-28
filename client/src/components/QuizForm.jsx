@@ -1,21 +1,29 @@
 import React, { useState } from 'react';
 import './styling.css'; // Ensure you have the styles imported
+import { FaSpinner } from 'react-icons/fa'; // Import spinner icon
 
 export default function QuizForm({ onGenerate }) {
   const [paragraph, setParagraph] = useState('');
   const [level, setLevel] = useState('medium');
-
+  const [isGenerating, setIsGenerating] = useState(false);
   const handleSubmit = (e) => {
+
     e.preventDefault();
     if (paragraph.trim()) {
+      setIsGenerating(true);
       onGenerate(paragraph, level);
+    }
+    else{
+      alert("Please paste a paragraph to generate a quiz.");
     }
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center  p-4">
+    <div className="h-screen flex flex-col items-center justify-center p-4">
       <div className="w-full max-w-md glass-card p-6 rounded-3xl shadow-xl text-white">
-        <h1 className="text-3xl font-bold text-center mb-4">UQUIZ</h1>
+        <h1 className="text-3xl font-bold text-center mb-4">
+          Welcome to uQuiz
+        </h1>
         <p className="text-center text-sm mb-6">
           Paste NCERT paragraph and choose difficulty to begin your quiz.
         </p>
@@ -44,7 +52,13 @@ export default function QuizForm({ onGenerate }) {
             type="submit"
             className="w-full mt-2 py-3 rounded-full bg-gradient-to-r from-yellow-400 to-orange-500 text-white font-semibold shadow-md hover:scale-105 transition"
           >
-            Generate Quiz
+            {isGenerating ? 
+            <span >
+              <FaSpinner className="inline-block mr-2 animate-spin" />
+              Generating Quiz...
+            </span>
+            :
+             'Generate Quiz'}
           </button>
         </form>
       </div>

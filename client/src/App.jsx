@@ -6,7 +6,7 @@ import Results from './components/Results';
 export default function App() {
   const [questions, setQuestions] = useState([]);
   const [answers, setAnswers] = useState({});
-  const [stage, setStage] = useState('input'); // input | quiz | results
+  const [stage, setStage] = useState('input');
 
   const handleGenerate = async (paragraph, level) => {
     const res = await fetch('/api/generate-quiz', {
@@ -31,10 +31,16 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-600 to-indigo-800 text-white p-4">
-      <div className="max-w-5xl mx-auto">
-        <h1 className="text-4xl font-bold mb-6 text-center">NEETPREP</h1>
+    <div className="min-h-screen bg-gradient-to-br from-blue-600 to-indigo-800 text-white relative">
+      {/* Fixed logo header */}
+      <header className="fixed top-0 left-0 w-full z-50 backdrop-blur-lg bg-white/10 border-b border-white/20 shadow-md">
+        <div className="max-w-5xl mx-auto py-2 flex justify-center">
+          <img src="./src/components/logo.png" alt="uQuiz Logo" className="h-20" />
+        </div>
+      </header>
 
+      {/* Content with top padding to prevent overlap */}
+      <main className="max-w-5xl mx-auto px-4 pt-30 pb-16">
         {stage === 'input' && <QuizForm onGenerate={handleGenerate} />}
 
         {stage === 'quiz' && (
@@ -73,7 +79,7 @@ export default function App() {
             onReset={handleReset}
           />
         )}
-      </div>
+      </main>
     </div>
   );
 }
