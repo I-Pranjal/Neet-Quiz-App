@@ -1,0 +1,9 @@
+/* Basic styling – feel free to replace with Tailwind or another framework */
+@import "tailwindcss";
+
+
+body {
+  font-family: system-ui, sans-serif;
+  background: #f8fafc;
+}
+
